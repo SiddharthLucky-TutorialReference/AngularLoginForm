@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 /* Routing */
 import { AppRoutingModule } from './app-routing.module';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 
 /* Angular Material */
@@ -36,7 +36,8 @@ import { RegisterComponent } from './components/register/register.component';
     AngularMaterialModule,
     ReactiveFormsModule,
     FormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

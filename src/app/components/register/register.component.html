@@ -9,14 +9,23 @@
       <mat-card-content>
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Username" formControlName ="register_username">
+          <span *ngIf="!registerForm.get('register_username').valid && !registerForm.get('register_username').touched">
+            Please provide a valid User name
+          </span>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Email" formControlName="register_email">
+          <span *ngIf="!registerForm.get('register_email').valid && !registerForm.get('register_username').touched">
+            Please provide a valid email
+          </span>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Password" formControlName="register_password">
+          <span *ngIf="!registerForm.get('register_password').valid && !registerForm.get('register_password').touched">
+            Please provide a valid Password
+          </span>
         </mat-form-field>
 
         <!--<mat-form-field class="example-full-width">

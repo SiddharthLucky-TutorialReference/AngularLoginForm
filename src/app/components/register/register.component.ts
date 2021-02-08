@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {RegisterRequestPayload} from './register.request.payload';
+import {AutherizerService} from '../service/autherizer.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +16,8 @@ export class RegisterComponent implements OnInit {
   registerRequestPayload: RegisterRequestPayload;
   Roles: any = ['Admin', 'Author', 'Reader'];
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private autherizer: AutherizerService,
+              private router: Router) {
     this.registerRequestPayload = {
       username: '',
       password: '',
@@ -36,6 +39,10 @@ export class RegisterComponent implements OnInit {
     this.registerRequestPayload.email = this.registerForm.get('register_email').value;
     console.log(this.registerRequestPayload);
 
-
+    this.autherizer.registerAccount(this.registerRequestPayload).
+      subscribe(data => {
+        /*this.router.navigate(['/login']);*/
+        console.log(data);
+    });
   }
 }
